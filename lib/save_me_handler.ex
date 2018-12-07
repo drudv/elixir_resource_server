@@ -16,13 +16,9 @@ defmodule SaveMeHandler do
     {[{"application/json", :to_json}], conn, state}
   end
 
-  def to_json(conn, state) do
-    IO.inspect("to_json")
-    {"{}", conn, state}
-  end
-
-  def from_json(conn, state) do
+  def from_json(req, state) do
     IO.inspect("from_json")
-    {true, conn, state}
+    req = :cowboy_req.set_resp_body("Hello", req)
+    {true, req, state}
   end
 end
