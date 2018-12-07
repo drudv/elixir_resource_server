@@ -2,20 +2,21 @@ defmodule RestHelloWorld.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :rest_hello_world,
-     version: "0.1.0",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :rest_hello_world,
+      version: "0.1.0",
+      elixir: "~> 1.3",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:cowboy, :logger],
-     mod: {RestHelloWorld, []}]
+    [applications: [:cowboy, :logger], mod: {RestHelloWorld, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -28,6 +29,6 @@ defmodule RestHelloWorld.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:cowboy, "~> 1.0"}]
+    [{:cowboy, "~> 1.0"}, {:mongodb, "~> 0.4.7"}, {:poolboy, "~> 1.5.1"}]
   end
 end
