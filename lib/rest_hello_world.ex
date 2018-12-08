@@ -28,7 +28,8 @@ defmodule RestHelloWorld do
     children = [
       # Starts a worker by calling: RestHelloWorld.Worker.start_link(arg1, arg2, arg3)
       # worker(RestHelloWorld.Worker, [arg1, arg2, arg3]),
-      worker(MongoConnection, [])
+      # worker(MongoConnection, [])
+      worker(Mongo, [[name: :mongo, database: "test", pool: DBConnection.Poolboy]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

@@ -16,7 +16,7 @@ defmodule RestHelloWorld.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:cowboy, :logger], mod: {RestHelloWorld, []}]
+    [applications: [:cowboy, :logger, :mongodb, :poolboy], mod: {RestHelloWorld, []}]
   end
 
   # Dependencies can be Hex packages:
