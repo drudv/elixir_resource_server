@@ -3,7 +3,7 @@ defmodule ElixirResourceServer.Mixfile do
 
   def project do
     [
-      app: :rest_hello_world,
+      app: :elixir_resource_server,
       version: "0.1.0",
       elixir: "~> 1.3",
       build_embedded: Mix.env() == :prod,

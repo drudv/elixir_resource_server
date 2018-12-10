@@ -6,6 +6,8 @@ Resource Provider PoC done in Elixir
 
     mix deps.get
     mix compile
+
+    export MONGO_URL="mongodb://localhost:27017/database"
     iex -S mix
 
     # get last 5 messages

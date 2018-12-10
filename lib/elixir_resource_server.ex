@@ -22,9 +22,17 @@ defmodule ElixirResourceServer do
         [{:env, [{:dispatch, dispatch}]}]
       )
 
+    mongo_url = System.get_env("MONGO_URL")
+
+    unless mongo_url do
+      raise "MONGO_URL environment variable is not set"
+    end
+
+    IO.inspect(mongo_url)
+
     children = [
       worker(Mongo, [
-        [name: :mongo, url: "mongodb://localhost:27017/test", pool: DBConnection.Poolboy]
+        [name: :mongo, url: mongo_url, pool: DBConnection.Poolboy]
       ])
     ]
 
