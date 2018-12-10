@@ -5,12 +5,21 @@ defmodule GiveMe5Handler do
 
   def content_types_provided(req, state) do
     {[
-       {"application/json", :hello_to_json}
+       {"application/json", :to_json}
      ], req, state}
   end
 
-  def hello_to_json(req, state) do
-    body = "{\"rest\": \"Five!\"}"
-    {body, req, state}
+  def to_json(req, state) do
+    found =
+      Mongo.find(:mongo, "message", %{},
+        limit: 5,
+        sort: %{created: -1},
+        pool: DBConnection.Poolboy
+      )
+      |> Enum.to_list()
+      |> Enum.map(&Map.delete(&1, "_id"))
+
+    {:ok, encoded} = Poison.encode(found, %{})
+    {encoded, req, state}
   end
 end
