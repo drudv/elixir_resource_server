@@ -11,10 +11,6 @@ defmodule SaveMeHandler do
     {[{"application/json", :from_json}], conn, state}
   end
 
-  def content_types_provided(conn, state) do
-    {[{"application/json", :to_json}], conn, state}
-  end
-
   def store_message(message, uuid) do
     created = DateTime.utc_now() |> DateTime.to_iso8601()
     data = %{message: message, uuid: uuid, created: created}

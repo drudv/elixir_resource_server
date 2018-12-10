@@ -1,37 +1,24 @@
 defmodule ToppageHandler do
-
   def init(_type, _req, _opts \\ []) do
     {:upgrade, :protocol, :cowboy_rest}
   end
 
   def content_types_provided(req, state) do
     {[
-      {"text/html", :hello_to_html},
-      {"application/json", :hello_to_json},
-      {"text/plain", :hello_to_text}
-    ], req, state}
+       {"text/html", :to_html}
+     ], req, state}
   end
 
-  def hello_to_html(req, state) do
+  def to_html(req, state) do
     body = "<html>
-<head>
-	<meta charset=\"utf-8\">
-	<title>REST Hello World!</title>
-</head>
-<body>
-	<p>REST Hello World as HTML!</p>
-</body>
-</html>"
+      <head>
+        <meta charset=\"utf-8\">
+        <title>Resource Provider in Elixir</title>
+      </head>
+      <body>
+        <p>Resource Provider in Elixir</p>
+      </body>
+      </html>"
     {body, req, state}
   end
-
-  def hello_to_json(req, state) do
-    body = "{\"rest\": \"Hello World!\"}"
-    {body, req, state}
-  end
-
-  def hello_to_text(req, state) do
-    {"REST Hello World as text!", req, state}
-  end
-
 end

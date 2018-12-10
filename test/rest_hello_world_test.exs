@@ -1,6 +1,6 @@
-defmodule RestHelloWorldTest do
+defmodule ElixirResourceServerTest do
   use ExUnit.Case
-  doctest RestHelloWorld
+  doctest ElixirResourceServer
 
   test "the truth" do
     assert 1 + 1 == 2

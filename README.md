@@ -1,9 +1,6 @@
-# RestHelloWorld
+# ElixirResourceServer
 
-Cowboy REST handler example ported to Elixir:
-
-https://github.com/ninenines/cowboy/tree/1.0.x/examples/rest_hello_world
-
+Resource Provider PoC done in Elixir
 
 # Instructions
 
@@ -11,5 +8,11 @@ https://github.com/ninenines/cowboy/tree/1.0.x/examples/rest_hello_world
     mix compile
     iex -S mix
 
+    # get last 5 messages
+    curl http://localhost:8080/give-me-five
 
-    curl -X GET http://localhost:8080 -H "Accept: application/json"
+    # post a new message
+    curl -H 'Content-Type: application/json' \
+        --request POST \
+        --data '{"message": "Hello"}' \
+        http://localhost:8080/save-me
