@@ -29,6 +29,12 @@ defmodule RestHelloWorld.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:cowboy, "~> 1.0"}, {:mongodb, "~> 0.4.7"}, {:poolboy, "~> 1.5.1"}]
+    [
+      {:cowboy, "~> 1.0"},
+      {:mongodb, "~> 0.4.7"},
+      {:poolboy, "~> 1.5.1"},
+      {:poison, "~> 4.0.1"},
+      {:elixir_uuid, "~> 1.2"}
+    ]
   end
 end
