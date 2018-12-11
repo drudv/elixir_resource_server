@@ -21,6 +21,16 @@ defmodule SaveMeHandler do
     data
   end
 
+  def fetch_uuid() do
+    case HTTPoison.get(System.get_env("UUID_ENDPOINT_URL")) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        body
+
+      _ ->
+        raise("Something went terribly wrong 🔥")
+    end
+  end
+
   def from_json(req, state) do
     {:ok, body, req2} = :cowboy_req.body(req)
     data = Poison.decode!(body)
@@ -31,7 +41,7 @@ defmodule SaveMeHandler do
           store_message(message, uuid)
 
         %{"message" => message} ->
-          store_message(message, UUID.uuid4())
+          store_message(message, fetch_uuid())
 
         _ ->
           raise "Wrong format"

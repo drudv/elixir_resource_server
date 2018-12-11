@@ -13,12 +13,13 @@ defmodule ElixirResourceServer.Mixfile do
   end
 
   def application do
-    [applications: [:cowboy, :logger, :mongodb, :poolboy], mod: {ElixirResourceServer, []}]
+    [applications: [:cowboy, :logger, :mongodb, :poolboy, :httpoison], mod: {ElixirResourceServer, []}]
   end
 
   defp deps do
     [
       {:cowboy, "~> 1.0"},
+      {:httpoison, "~> 1.4"},
       {:mongodb, "~> 0.4.7"},
       {:poolboy, "~> 1.5.1"},
       {:poison, "~> 4.0.1"},

@@ -10,7 +10,8 @@ defmodule ElixirResourceServer do
          [
            {"/", ToppageHandler, []},
            {"/give-me-five", GiveMe5Handler, []},
-           {"/save-me", SaveMeHandler, []}
+           {"/save-me", SaveMeHandler, []},
+           {"/uuid", UUIDHandler, []}
          ]}
       ])
 
